@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!--Author: Jaison Eccleston 11-OCT-2022-->
+<head>
+  <meta charset="utf-8" >
+  <style>
+   table, th, td, tr {
+      padding: 2px 12px;
+      text-align: center;
+      border-collapse: collapse;
+      border: 2px solid black;
+   }
+
+   table {  
+      margin: auto;
+      width: 40%;
+      border: 2px solid black;
+   }
+
+   .leftAlign{
+      text-align: left;
+   }
+
+   .resize1{
+      text-align: center;
+      width: 28%;
+   }
+
+   .resize2{
+      text-align: center;
+      width: 72%;
+   }
+
+   body {   
+      margin: 25px;
+      text-align: left;         
+   }
+
+   div{
+      
+      margin: 5px;
+      padding: 10px;
+      width: 90%;
+      background-color: #8e02c5;      
+   }
+
+   h1, h2, h3{
+      text-align: center;
+   }
+
+   .centered{
+      text-align: center;
+   }
+
+</style>
+<title>Project 8 - Grocery List (objects)</title>
+   <script >
+      var gList=[];
+      var itemsArray = [];
+      var qtyArray= [];
+      var costArray=[];
+      var damage=0;
+      function groceryList(item, qty, cost){
+         this.groceryList_item= item;
+         this.groceryList_qty= qty;
+         this.groceryList_cost= cost;
+         this.groceryList_display = function(){
+            return("<p>"+this.groceryList_item+" "+this.groceryList_qty+" "+this.groceryList_cost+"</p>");
+         }
+      }
+      function insert(){
+         gList.push(new groceryList((document.getElementById('item').value),
+          (document.getElementById('qty').value),
+          (document.getElementById('cost').value)));
+
+         //document.getElementById("demo1").innerHTML = "The last item: " +document.getElementById('item').value + ", x" +document.getElementById('qty').value+", &#36;"+ document.getElementById('cost').value;
+         //document.getElementById("demo2").innerHTML = "The WHOLE array: " +itemsArray.toString();  // whole array
+         displayReceipt();
+      }
+
+   function displayReceipt(){
+	   text="";
+	   text="==============================================================================";
+   	text+="<br><h2>Mini-Mart EMU Receipt: Jaison Eccleston</h2>";
+	   text+="<table><tr><th><h3>Item</h3></th><th><h3>Quantity</h3></th><th><h3>Cost</h3></th></tr>";
+	   for (var i = 0; i < gList.length; i++) {
+		   text += "<tr><td>" + gList[i].groceryList_item+"</td><td>"+gList[i].groceryList_qty+"</td><td> &#36;"+gList[i].groceryList_cost+"</td></tr>";
+	   }
+	   text += "</table>";
+	   document.getElementById("demo2").innerHTML = text;
+   }
+    
+   function displayFinalReceipt(){
+      receipt="";   
+      for (var i = 0; i < gList.length; i++) {
+         damage += Number((gList[i].groceryList_qty)*(gList[i].groceryList_cost));
+      } 
+      receipt+="<table><tr><td class=resize2; colspan=2>Your checkout total is: </td><td class=resize1>&#36;"+damage+"</td></tr></table>";
+      document.getElementById("demo3").innerHTML = receipt;
+    }
+
+</script>
+</head>
+
+<body>
+   <div>
+   <h1>Mini-Mart EMU Online</h1>
+   Enter your item information.<br>
+   Submit the item by clicking on "add to Cart".<br>
+   Click on the Checkout button when done enterine items.<br><br>
+  
+   <form>
+      <!-- include input boxs for the item and cost of the item -->
+      <input id="item" type="text" size="40" placeholder="Item"><br>      
+      <input id="cost" type="number" placeholder="Cost of item"><br>
+      <input id="qty" type="number" placeholder="Quantity"><br>
+
+      <br>
+      <input type="reset" value="Add to Cart" onclick="insert()" >
+      <input type="reset" value="Check Out" onclick="displayFinalReceipt()">    
+   </form>
+
+
+  <p id="demo1"></p>
+  <p id="demo2"></p>
+  <p class="centered" id="demo3"></p>
+</div>
+
+
+</body>
+</html>

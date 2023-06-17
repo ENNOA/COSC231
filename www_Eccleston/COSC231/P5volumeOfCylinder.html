@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Jaison Eccleston 27SEP2022
+    compute volume of a cylinder.
+    Equations used:
+    Area=radius*radius*pi
+    volume=area*length
+-->
+<head>
+  <meta charset="utf-8">
+  <style>
+  body {
+  		margin:50px; 
+  		text-align:left;
+  		background-color: #aeaeae;
+  }
+  </style>
+  <title>Compute Volume of Cylinder</title>
+  <script>
+    function cylinderVolume(){
+       var cylinderRadius = document.getElementById('radius').value;
+       var cylinderlength = document.getElementById('length').value;
+       var area= (cylinderRadius*cylinderRadius)*Math.PI;
+       var volume=area*cylinderlength;
+       document.getElementById('cylArea').innerHTML = "The area is: "+ area;
+       document.getElementById('cylVolume').innerHTML = "The volume is: "+ volume;
+    }
+  </script>
+</head>
+
+<body>
+  <h2>Computing the volume of a cylinder <br> Program by: Jaison Eccleston</h2>
+  <hr>
+  <p>This program will take the radius and length of a cylinder, given as real numbers, and compute the area and volume of the cylinder, also displayed as real numbers.</p>
+  <br>
+  <p>Enter the radius of the cylinder: <input id="radius" type="number" oninput="cylinderVolume()"></p>
+  <p>Enter the length of the cylinder: <input id="length" type="number" oninput="cylinderVolume()"></p>
+  <br>
+  <h3>Results:</h3>
+  <p id="cylArea"></p>
+  <p id="cylVolume"></p>
+  <br><br>
+  <a href="index.html">Return to COSC 231 Projects</a>
+
+
+
+</body>
+</html>

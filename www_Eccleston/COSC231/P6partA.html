@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--Jaison Eccleston 11-OCT-2022-->
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Project 6A</title>
+  
+    <style>
+    #container {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      background: #4E02A3;
+    }
+
+    #ball {
+        width:50px;
+        height:50px;
+        border-radius:50%;
+        position:absolute;
+        background-color: #0AC400;
+    }
+
+    </style>
+  </head>
+<body>
+
+<p>
+<button onclick="myMove()">Click Me</button>
+</p>
+
+<div id ="container">
+<div id ="ball"></div>
+</div>
+<script>
+    function myMove() {
+      let id = null;
+      const elem = document.getElementById("ball");   
+      let xpos = 0;
+      let ypos = 0;
+      id = setInterval(frame, 1);
+      
+      function frame() {
+        if (xpos < 175 && ypos < 350 ) {
+          xpos++;
+          ypos+=2;
+          elem.style.top = ypos + "px";
+          elem.style.left = xpos + "px";
+        }
+
+        else if(xpos<350 && ypos<=350){
+          xpos++;
+          ypos-=2;
+          elem.style.top = ypos + "px";
+          elem.style.left = xpos + "px";
+        }
+      }
+    }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!-- Jaison Eccleston 15-SEP -2022 -->
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Project 6B</title>
+    <script>
+      
+      function resetForm() {   
+           document.getElementById("myForm").reset();
+           document.getElementById("name").style.backgroundColor = "white";
+           document.getElementById("age").style.backgroundColor = "white";
+           document.getElementById("color").style.backgroundColor = "white";
+           document.getElementById("outputStory").innerHTML = "";
+           }
+
+      function changeColor(element){
+          if (element == 1)
+            document.getElementById("qty1").style.backgroundColor = "yellow";
+          else if (element == 2)
+            document.getElementById("qty2").style.backgroundColor = "yellow";
+          else if (element == 3)
+            document.getElementById("qty3").style.backgroundColor = "yellow";
+          else if (element == 4)
+            document.getElementById("qty1").style.backgroundColor = "white";
+          else if (element == 5)
+            document.getElementById("qty2").style.backgroundColor = "white";
+          else if (element == 6)
+            document.getElementById("qty3").style.backgroundColor = "white";
+          else if (element == 7)
+            document.getElementById("qty1").style.backgroundColor = "green";
+          else if (element == 8)
+            document.getElementById("qty2").style.backgroundColor = "green";
+          else
+            document.getElementById("qty3").style.backgroundColor = "green";
+      }
+
+      
+
+      function total(){
+          var item1=document.getElementById("qty1").value;
+          var item2=document.getElementById("qty2").value;
+          var item3=document.getElementById("qty3").value;
+          var price1=Number(item1);
+          var price2=Number(item2);
+          var price3=Number(item3);
+          var theDamage=((price1*3.99)+(price2*35.99)+(price3*7.99)).toFixed(2);
+          alert("Your total is "+theDamage);
+      }
+
+   </script>
+
+    <style>
+        table, th, td, tr {
+                    border: 1px solid black;
+                    padding: 2px 12px;
+                    border-collapse: collapse;
+                   }
+        table {  margin: auto;
+        		 width: 50%;
+        
+        }
+        body {   margin:25px;
+                 text-align: center;
+        }
+     </style>
+  </head>
+
+
+  <body>
+
+  <h2>Jaison's Tabletop Games </h2>
+  <form id="myForm">
+    <table>        
+      <tr>
+          <td> Bag of 20 assorted Dice (&#36; 3.99) </td>  
+          <td><input id="qty1" type="number" onmouseover="changeColor(1)" onmouseleave="changeColor(4)" onclick="changeColor(7)" onchange="changeColor(7)"> </td>
+      </tr>
+              
+      <tr>
+          <td> Dungeons and Dragons Sourcebooks (&#36; 35.99):  </td> 
+          <td><input id="qty2" type="number" onmouseover="changeColor(2)" onmouseleave="changeColor(5)" onclick="changeColor(8)" onchange="changeColor(8)"> </td> 
+      </tr>
+                           
+      <tr>
+          <td> Goblin plushies (&#36; 7.99):</td>  
+          <td><input id="qty3" type="number" onmouseover="changeColor(3)" onmouseleave="changeColor(6)" onclick="changeColor(9)" onchange="changeColor(9)"> </td>
+      </tr>
+  </table>
+</form>
+
+<br><br>
+<button onclick="total()">Submit the Changes</button>
+<button onclick="resetForm()">Reset the form</button>
+
+</body>
+</html>
